@@ -1,8 +1,8 @@
 const express = require('express');
 const puppeteer = require("puppeteer");
-const Product = require('./models/Product');
+const Product = require('../models/Product');
 
-modules.exports = {
+module.exports = {
     getProductInfo: async ({ body: { productUrl } }, res) => {
         const browser = await puppeteer.launch({ headless: "new" });
         
@@ -44,5 +44,5 @@ modules.exports = {
         browser.close();
       
         res.status(200).send(product);
-      }
+    }
 }
