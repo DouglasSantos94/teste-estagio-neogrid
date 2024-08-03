@@ -4,21 +4,20 @@ const Product = require('../models/Product');
 
 module.exports = {
     getProductInfo: async ({ body: { productUrl } }, res) => {
-        const browser = await puppeteer.launch({ headless: "new" });
+        const browser = await puppeteer.launch({ headless: "false" });
         
         const page = await browser.newPage();
-        const url = productUrl;
-        
+
         await page.goto(
-          url
+          productUrl
         );
-      
+
+        await page.waitForSelector('.showcase');
+        
         const content = await page.evaluate(() => {
           return document.querySelector(".showcase");
         });
-      
-        await page.waitForNetworkIdle();
-      
+            
         const description = await page.evaluate(() => {
           return content.querySelector(".features--description").textContent.trim();
         });
@@ -41,8 +40,8 @@ module.exports = {
             image,
             description
         );
-        browser.close();
-      
+        
         res.status(200).send(product);
+        await page.close();
     }
 }
