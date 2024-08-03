@@ -30,20 +30,19 @@ app.get("/", async ({ body: { productUrl } }, res) => {
   });
 
   const title = await page.evaluate(() => {
-    return content.querySelector(".product-name").textContent;
+    return content.querySelector(".product-name").textContent.trim();
   });
 
   const image = await page.evaluate(() => {
-    return document.querySelector('img.float-buybox-wrap-product__image').src;
+    return content.querySelector('img.float-buybox-wrap-product__image').src;
   });
   
-  const product = {product: new Product({
+  const product =  new Product(
       title,
       price,
-      description,
-      image
-    })
-  };
+      image,
+      description
+  );
   browser.close();
 
   res.status(200).send(product);
