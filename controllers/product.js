@@ -9,10 +9,8 @@ module.exports = {
         const page = await browser.newPage();
 
         await page.goto(
-          productUrl
+          productUrl, {waitUntil: 'networkidle2'}
         );
-
-        await page.waitForSelector('.showcase');
         
         const content = await page.evaluate(() => {
           return document.querySelector(".showcase");
