@@ -8,12 +8,14 @@ module.exports = {
   },
   getProductInfoCsv: async ({ body: { productUrl } }, res) => {
     const product = await extractProductInfo(productUrl);
-
     const { errorMessage, filePath } = convertProductToCsv(product);
 
     res.status(errorMessage ? 500 : 200)
       .send(errorMessage 
         ? {errorMessage} 
         : {msg: `Sucesso: arquivo CSV salvo em: ${filePath}`});
+  },
+  searchProduct: (req, res) => {
+    res.render('searchProduct');
   }
 }

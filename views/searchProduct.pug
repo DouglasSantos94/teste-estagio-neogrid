@@ -1,0 +1,53 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title Teste técnico Neogrid
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous")
+  script(src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous")
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+    .container-fluid
+      a.navbar-brand(href='#') Netshoes Scraper
+  .py-2
+      block content
+  .container
+    .row.justify-content-center
+      .col-md-8
+        .card
+          .card-header Informações do produto
+          .card-body
+            form.form-horizontal
+              .mb-3
+                label.form-label.control-label(for='productUrl') URL do produto
+                input#productUrl.form-control(type='text' name='productUrl')
+              .mb-3.py-3
+                button.btn.btn-primary(type='submit') Buscar Informações              
+  .mb-3
+  .w-75.m-auto
+    .alert.alert-warning(role='alert') Aguarde! Estamos processando as informações...
+
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous')
+
+script.
+  $(document).ready(function() {
+    $('div.alert').css('display', 'none');
+  });
+
+  $('form').on('submit', function(e) {
+    e.preventDefault();
+
+    const url = $('#productUrl').val();
+
+    $('div.alert').css('display', '');
+
+    $.ajax({
+      url: 'productInfoCsv',
+      method: 'POST',
+      data: {
+        productUrl: url
+      },
+      success: function({msg}) {
+        alert(msg);
+      },
+    })
+  })
