@@ -14,22 +14,23 @@ module.exports = {
       const product = await extractProductInfo("https://www.netshoes.com.br/p/creatina-max-titanium-monohidratada-natural-A05-4154-001");
 
       const csvContent = [
-        ['Name', 'Price', 'Description', 'Image'],
-        [product.title, product.price, product.description, product.image]
+        ['Name', 'Price', 'Image', 'Description'],
+        Object.values(product)
       ].map(e => e.join(';')).join('\n');
+
       const csvDirectoryPath = `${os.homedir()}/csv`;
+
       if(!fs.existsSync(csvDirectoryPath)) {
         fs.mkdirSync(csvDirectoryPath);
       }
+
       const filePath = path.join(`${os.homedir()}/csv`, 'data.csv');
+
       fs.writeFile(filePath, csvContent, (err) => {
         if(err) 
-          console.error('Erro');
+          res.status(500).send({errorMessage: 'Ocorreu um erro no processamento!'});
         else
-          console.log('csv salvo: ', filePath);
-
+          res.status(200).send({msg: `Sucesso: arquivo CSV salvo em: ${filePath}`});
       })
-      await browser.close();
-      res;
     }
 }
