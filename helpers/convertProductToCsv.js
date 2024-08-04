@@ -19,7 +19,7 @@ module.exports = function convertProductToCsv(product) {
   
   fs.writeFile(filePath, csvContent, (err) => {
     if(err) {
-      throw new Error;
+      console.error(err);
     }
   });
   
