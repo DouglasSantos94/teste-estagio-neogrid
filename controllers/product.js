@@ -1,36 +1,19 @@
-const fs = require('fs');
-const path = require('path');
-const extractProductInfo = require('../helpers/extractProductInfo');
-const os = require('os');
-
+const { extractProductInfo, convertProductToCsv } = require('../helpers/helpers');
 
 module.exports = {
-    getProductInfo: async ({ body: { productUrl } }, res) => {
-        const product = await extractProductInfo(productUrl);
+  getProductInfo: async ({ body: { productUrl } }, res) => {
+    const product = await extractProductInfo(productUrl);
 
-        res.status(200).send(product);
-    },
-    getProductInfoCsv: async ({ body: { productUrl } }, res) => {
-      const product = await extractProductInfo("https://www.netshoes.com.br/p/creatina-max-titanium-monohidratada-natural-A05-4154-001");
+    res.status(200).send(product);
+  },
+  getProductInfoCsv: async ({ body: { productUrl } }, res) => {
+    const product = await extractProductInfo(productUrl);
 
-      const csvContent = [
-        ['Name', 'Price', 'Image', 'Description'],
-        Object.values(product)
-      ].map(e => e.join(';')).join('\n');
+    const { errorMessage, filePath } = convertProductToCsv(product);
 
-      const csvDirectoryPath = `${os.homedir()}/csv`;
-
-      if(!fs.existsSync(csvDirectoryPath)) {
-        fs.mkdirSync(csvDirectoryPath);
-      }
-
-      const filePath = path.join(`${os.homedir()}/csv`, 'data.csv');
-
-      fs.writeFile(filePath, csvContent, (err) => {
-        if(err) 
-          res.status(500).send({errorMessage: 'Ocorreu um erro no processamento!'});
-        else
-          res.status(200).send({msg: `Sucesso: arquivo CSV salvo em: ${filePath}`});
-      })
-    }
+    res.status(errorMessage ? 500 : 200)
+      .send(errorMessage 
+        ? {errorMessage} 
+        : {msg: `Sucesso: arquivo CSV salvo em: ${filePath}`});
+  }
 }
