@@ -28,7 +28,7 @@ module.exports = async function extractProductInfo (productUrl) {
   });
 
   const image = await page.evaluate(() => {
-    return content.querySelector('img.float-buybox-wrap-product__image').src;
+    return document.head.querySelectorAll('link[rel="preload"]')[0].href;
   });
   
   const product =  new Product(
