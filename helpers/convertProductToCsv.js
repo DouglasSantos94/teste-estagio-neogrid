@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const extractProductInfo = require('../helpers/extractProductInfo');
 const os = require('os');
 
 
@@ -16,19 +15,13 @@ module.exports = function convertProductToCsv(product) {
     fs.mkdirSync(csvDirectoryPath);
   }
 
-  const filePath = path.join(`${os.homedir()}/csvds`, 'data.csv');
+  const filePath = path.join(`${os.homedir()}/csv`, 'data.csv');
   
-  let errorMessage = '';
-
-  try {
-    fs.writeFile(filePath, csvContent, (err) => {
-      if(err) {
-        errorMessage = 'Ocorreu um erro no processamento!';
-      }
-    });
-  } catch(e) {
-    console.error(e);
-  }
-
-  return { errorMessage, filePath };
+  fs.writeFile(filePath, csvContent, (err) => {
+    if(err) {
+      throw new Error;
+    }
+  });
+  
+  return filePath;
 }

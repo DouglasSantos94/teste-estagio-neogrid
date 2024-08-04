@@ -2,18 +2,27 @@ const { extractProductInfo, convertProductToCsv } = require('../helpers/helpers'
 
 module.exports = {
   getProductInfo: async ({ body: { productUrl } }, res) => {
-    const product = await extractProductInfo(productUrl);
+    try {
 
-    res.status(200).send(product);
+      const product = await extractProductInfo(productUrl);
+      
+      res.status(200).send(product);
+    } catch(e) {
+      console.error(e);
+      res.status(500).send({ errorMessage: "Ocorreu um erro durante o processamento!" });
+    }
   },
-  getProductInfoCsv: async ({ body: { productUrl } }, res) => {
-    const product = await extractProductInfo(productUrl);
-    const { errorMessage, filePath } = convertProductToCsv(product);
+  productInfoCsv: async ({ body: { productUrl } }, res) => {
+    try {
 
-    res.status(errorMessage ? 500 : 200)
-      .send(errorMessage 
-        ? {errorMessage} 
-        : {msg: `Sucesso: arquivo CSV salvo em: ${filePath}`});
+      const product = await extractProductInfo(productUrl);
+      const filePath = convertProductToCsv(product);
+      
+      res.status(200).send({ msg: `Sucesso: arquivo CSV salvo em: ${filePath}` });
+    } catch(e) {
+      console.error(e);
+      res.status(500).send({ errorMessage: 'Ocorreu um erro durante o processamento!' });
+    }
   },
   searchProduct: (req, res) => {
     res.render('searchProduct');
