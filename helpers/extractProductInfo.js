@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer');
 const Product = require('../models/Product');
 
 module.exports = async function extractProductInfo (productUrl) {
-        const browser = await puppeteer.launch({ headless: "false" });
+        const browser = await puppeteer.launch({ headless: 'false' });
         
         const page = await browser.newPage();
 
@@ -12,19 +12,19 @@ module.exports = async function extractProductInfo (productUrl) {
         );
         
         const content = await page.evaluate(() => {
-          return document.querySelector(".showcase");
+          return document.querySelector('.showcase');
         });
             
         const description = await page.evaluate(() => {
-          return content.querySelector(".features--description").textContent.trim();
+          return content.querySelector('.features--description').textContent.trim();
         });
       
         const price = await page.evaluate(() => {
-          return content.querySelector(".saleInCents-value").textContent.trim();
+          return content.querySelector('.saleInCents-value').textContent.trim();
         });
       
         const title = await page.evaluate(() => {
-          return content.querySelector(".product-name").textContent.trim();
+          return content.querySelector('.product-name').textContent.trim();
         });
       
         const image = await page.evaluate(() => {

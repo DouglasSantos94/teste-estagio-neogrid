@@ -7,5 +7,5 @@ app.use(express.json());
 app.use("/", scraperRoutes);
 
 app.listen(3000, () => {
-    console.log("Aplicação em execução...")
+    console.log('Aplicação em execução...');
 });
