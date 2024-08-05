@@ -29,6 +29,11 @@ Para testar a API, pode ser utilizado o Postman (https://www.postman.com/downloa
 
 Para inserir um a URL de forma gráfica:
 1 - Abra um navegador;
+
 2 - Insira a URL `http://localhost:3000/searchProduct`;
+
 3 - Insira uma URL de produto da Nesthoes e clique em "Buscar Informações";
-4 - Será feito o download de um arquivo CSV com as informações, no local indicado pelo alert.
+
+4 - Será feito o download de um arquivo CSV com as informações. A localização do arquivo será mostrada no alert logo após o fim do processamento.
+
+
