@@ -1,6 +1,6 @@
 Olá! Esta aplicação foi desenvolvida para a vaga de Estágio em Back-End da Neogrid.
 
-A aplicação consiste em criar um WebScraper para obter informações de páginas de produtos do site Netshoes (www.netshoes.com.br).
+O projeto consiste um WebScraper para obter informações de páginas de produtos do site Netshoes (www.netshoes.com.br).
 
 Para isso, foi desenvolvida uma aplicação em Node.JS.
 
@@ -10,6 +10,7 @@ Requisitos:
  - NPM na versão 10.8.1
 
 **Fazendo o download do projeto**
+
 1 - Fazer o clone do projeto para a sua máquina;
 
 2 - Após o download, navegue até o diretório da aplicação;
