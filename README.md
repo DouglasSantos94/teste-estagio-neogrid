@@ -18,8 +18,8 @@ Requisitos:
 
 4 - Após instalar as dependências, execute o comando `npm run start` para rodar a aplicação;
 
-**Testando a aplicação
-**
+**Testando a aplicação**
+
 Para testar a API, pode ser utilizado o Postman (https://www.postman.com/downloads/).
 
 1 - Dentro do Postman, insira a seguinte URL: http://localhost:3000/productInfo;
