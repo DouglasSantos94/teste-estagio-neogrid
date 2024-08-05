@@ -4,6 +4,15 @@ O projeto consiste um WebScraper para obter informações de páginas de produto
 
 Para isso, foi desenvolvida uma aplicação em Node.JS.
 
+Visando uma melhor manutenção e manutenibilidade, o código foi dividido em diferentes diretórios e módulos.
+
+- /controller: contém a lógica principal da aplicação;
+- /helpers: aqui foram extraídas as funções utilitárias da aplicação, que realizam tarefas que poderiam ser reutilizacas;
+- /models: entidades da aplicação;
+- /routes: rotas da aplicação;
+- /scripts: funções Javascript utilizadas pelas views;
+- /views: telas para interação do usuário
+
 Requisitos:
 
  - Node na versão 20.16.0
