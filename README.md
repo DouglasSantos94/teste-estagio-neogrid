@@ -7,7 +7,7 @@ Para isso, foi desenvolvida uma aplicação em Node.JS.
 Requisitos:
 
  - Node na versão 20.16.0
-- NPM na versão 10.8.1
+ - NPM na versão 10.8.1
 
 **Fazendo o download do projeto**
 1 - Fazer o clone do projeto para a sua máquina;
@@ -28,6 +28,7 @@ Para testar a API, pode ser utilizado o Postman (https://www.postman.com/downloa
 ![image](https://github.com/user-attachments/assets/6374d405-90c0-43f4-ba90-dc2a54a75ae0)
 
 Para inserir um a URL de forma gráfica:
+
 1 - Abra um navegador;
 
 2 - Insira a URL `http://localhost:3000/searchProduct`;
