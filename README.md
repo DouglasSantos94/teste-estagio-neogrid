@@ -4,16 +4,18 @@ A aplicação consiste em criar um WebScraper para obter informações de págin
 
 Para isso, foi desenvolvida uma aplicação em Node.JS.
 
-Versão do Node: 20.16.0
-Versão do npm: 10.8.1
+Requisitos:
 
-1 - Acessar o github e fazer o clone;
+ - Node na versão 20.16.0
+- NPM na versão 10.8.1
 
-2 - entrar na pasta;
+1 - Fazer o clone do projeto para a sua máquina;
 
-3 - npm i para instalar as dependências;
+2 - Após o download, navegue até o diretório da aplicação;
 
-4 - npm run start para rodar;
+3 - Em um terminal, execute o comando `npm i` para instalar as dependências do projeto;
+
+4 - Após instalar as dependências, execute o comando `npm run start` para rodar a aplicação;
 
 5 - abrir o postman;
 
