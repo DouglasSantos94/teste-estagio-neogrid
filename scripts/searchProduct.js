@@ -7,6 +7,11 @@ $('form').on('submit', function(e) {
   e.preventDefault();
 
   const url = $('#productUrl').val();
+  
+  if(!url.startsWith('https://www.netshoes.com.br/p/')) {
+    alert('Insira uma URL válida!');
+    return;
+  }
 
   $('div.alert').css('display', '');
 
