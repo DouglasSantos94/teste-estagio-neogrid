@@ -8,7 +8,7 @@ router.use(express.urlencoded({
 }));
 
 router.get('/productInfo', productController.getProductInfo);
-router.post('/productInfoCsv', productController.productInfoCsv,);
+router.post('/productInfoCsv', productController.productInfoCsv);
 router.get('/searchProduct', productController.searchProduct);
 
 module.exports = router;
