@@ -17,6 +17,11 @@ Requisitos:
 
 4 - Após instalar as dependências, execute o comando `npm run start` para rodar a aplicação;
 
-5 - abrir o postman;
+Testando a aplicação
+Para testar a API, pode ser utilizado o Postman (https://www.postman.com/downloads/).
+
+1 - Dentro do Postman, insira a seguinte URL: http://localhost:3000/productInfo;
+2 - No body da request, insira a propriedade "productUrl", tendo como valor alguma URL de um produto da Nesthoes.
+![image](https://github.com/user-attachments/assets/6374d405-90c0-43f4-ba90-dc2a54a75ae0)
 
 6 - abrir o browser em /searchProducts
